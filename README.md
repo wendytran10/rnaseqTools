@@ -17,9 +17,11 @@ This function processes DGEA results and prepares gene lists for enrichment anal
 
 ```r
 cp_inputs <- prepare_clusterProfiler_geneLists(
-  dgea_res_file = "results.csv",
+  dgea_res_file = "deseq2_results.csv",
   pValCutoff = 0.05,
-  pValCol = "pvalue",
+  pValCol = "padj",
+  log2FCCutoff = 1,
+  log2FCCol = "log2FoldChange",
   geneID_fromType = "SYMBOL",
   geneID_toType = "ENTREZID"
 )
