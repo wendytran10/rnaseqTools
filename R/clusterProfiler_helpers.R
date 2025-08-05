@@ -4,15 +4,15 @@
 #' analysis using the clusterProfiler package.
 #'
 #' @param dgea_res_file character. Path to the DGEA result file (.csv, .tsv, or .txt).
-#' @param pValCutoff numeric. Adjusted p-value cutoff to filter significantly differentially expressed genes.
-#' @param pValCol character. Name of the column in the DGEA file that contains adjusted p-values (e.g., "padj").
-#' @param log2FCCutoff numeric. log2FC cutoff to filter significantly differentially expressed genes.
-#' @param log2FCCol character. Name of the column in the DGEA file that contains log2FoldChange (e.g., "log2FC" or "log2FoldChange").
-#' @param geneID_fromType character. Gene ID type in DGEA results.
-#' @param geneID_toType character. Gene ID type to convert to.
-#' @param org character. Organism database to use for conversion (e.g., "org.Hs.eg.db").
+#' @param pValCutoff numeric. Adjusted p-value cutoff to filter significantly differentially expressed genes. Default is 0.05.
+#' @param pValCol character. Name of the column in the DGEA file that contains adjusted p-values (e.g., "padj"). Default is "padj".
+#' @param log2FCCutoff numeric. log2FC cutoff to filter significantly differentially expressed genes. Default is 1.
+#' @param log2FCCol character. Name of the column in the DGEA file that contains log2FoldChange (e.g., "log2FC" or "log2FoldChange"). Default is "log2FoldChange".
+#' @param geneID_fromType character. Gene ID type in DGEA results. Default is "SYMBOL". 
+#' @param geneID_toType character. Gene ID type to convert to. Default is "SYMBOL".
+#' @param org character. Organism database to use for conversion (e.g., "org.Hs.eg.db"). Default is "org.Hs.eg.db".
 #'
-#' @return A list with gene vectors: all genes, upregulated, and downregulated.
+#' @return A list with gene vectors: all genes, significantly upregulated, and significantly downregulated.
 #' 
 #' @importFrom dplyr filter
 #' @importFrom rlang sym
@@ -57,7 +57,4 @@ prepare_clusterProfiler_geneLists <- function(dgea_res_file, pValCutoff = 0.05, 
   
   return(list(geneList = geneList, gene_up = gene_up, gene_down = gene_down))
 }
-
-
-
 
