@@ -1,13 +1,4 @@
-#' title: Over-representation analysis with clusterProfiler
-#' purpose: Given a set of genes (significant genes from differential gene expression analysis), we want to 
-#'          assess whether they are associated with any pathways in Reactome, GO, or KEGG
-#' author: Wendy Tran
-#' date: August 5, 2025
-
-
-
-
-#' Perform GO Enrichment Analysis with clusterProfiler
+#' Prepares geneList inputs for clusterProfiler ORA
 #'
 #' This function reads differential gene expression results and performs GO enrichment
 #' analysis using the clusterProfiler package.
@@ -17,18 +8,21 @@
 #' @param pValCol character. Name of the column in the DGEA file that contains adjusted p-values (e.g., "padj").
 #' @param log2FCCutoff numeric. log2FC cutoff to filter significantly differentially expressed genes.
 #' @param log2FCCol character. Name of the column in the DGEA file that contains log2FoldChange (e.g., "log2FC" or "log2FoldChange").
-#' @param geneID_fromType character. Gene ID type in DGEA results
-#' @param geneID_toType character. Gene ID type to convert to 
-#' @param org character. organism to use for conversion (options come from bitr())
-
-#' @return A clusterProfiler `enrichResult` object containing GO enrichment results.
+#' @param geneID_fromType character. Gene ID type in DGEA results.
+#' @param geneID_toType character. Gene ID type to convert to.
+#' @param org character. Organism database to use for conversion (e.g., "org.Hs.eg.db").
+#'
+#' @return A list with gene vectors: all genes, upregulated, and downregulated.
 #' 
-#' @import tidyverse
-#' @import clusterProfiler
+#' @importFrom dplyr filter
+#' @importFrom rlang sym
+#' @importFrom clusterProfiler bitr
+#' @importFrom utils read.csv read.delim
+#' @importFrom magrittr %>%
 #' 
 #' @examples
-#' # Example usage:
-#' # result <- perform_enrichGO("deseq2_results.csv", 0.05, "padj")
+#' # result <- prepare_clusterProfiler_geneLists("deseq2_results.csv", 0.05, "padj")
+#'
 #' @name prepare_clusterProfiler_geneLists
 #' @export
 prepare_clusterProfiler_geneLists <- function(dgea_res_file, pValCutoff = 0.05, pValCol = "padj", 
@@ -44,7 +38,6 @@ prepare_clusterProfiler_geneLists <- function(dgea_res_file, pValCutoff = 0.05, 
   else{
     stop("Error: Unsupported file type. Please provide a .txt or .csv file ")
   }
-  
   # subset DGEA results for significant upregulated and downregualted genes 
   sig_res <- res %>% filter(!!sym(pValCol) < pValCutoff & abs(!!sym(log2FCCol)) > log2FCCutoff)
   

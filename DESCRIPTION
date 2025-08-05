@@ -2,8 +2,7 @@ Package: rnaseqTools
 Title: RNA-seq Analysis Tools
 Version: 0.1.0
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Author: Wendy Tran
+    person("Wendy", "Tran", email = "wendytntran@gmail.com", role = c("aut", "cre"))
 Maintainer: Wendy Tran <wendytntran@gmail.com>
 Description: Modular functions for downstream RNA-seq analysis including
     differential gene expression analysis (DGEA), gene set enrichment
@@ -12,3 +11,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Imports:
+    dplyr,
+    rlang,
+    clusterProfiler,
+    magrittr

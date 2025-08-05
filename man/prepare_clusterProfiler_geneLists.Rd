@@ -2,12 +2,7 @@
 % Please edit documentation in R/prepare_clusterProfiler_geneLists.R
 \name{prepare_clusterProfiler_geneLists}
 \alias{prepare_clusterProfiler_geneLists}
-\title{title: Over-representation analysis with clusterProfiler
-purpose: Given a set of genes (significant genes from differential gene expression analysis), we want to
-assess whether they are associated with any pathways in Reactome, GO, or KEGG
-author: Wendy Tran
-date: August 5, 2025
-Perform GO Enrichment Analysis with clusterProfiler}
+\title{Prepares geneList inputs for clusterProfiler ORA}
 \usage{
 prepare_clusterProfiler_geneLists(
   dgea_res_file,
@@ -31,20 +26,20 @@ prepare_clusterProfiler_geneLists(
 
 \item{log2FCCol}{character. Name of the column in the DGEA file that contains log2FoldChange (e.g., "log2FC" or "log2FoldChange").}
 
-\item{geneID_fromType}{character. Gene ID type in DGEA results}
+\item{geneID_fromType}{character. Gene ID type in DGEA results.}
 
-\item{geneID_toType}{character. Gene ID type to convert to}
+\item{geneID_toType}{character. Gene ID type to convert to.}
 
-\item{org}{character. organism to use for conversion (options come from bitr())}
+\item{org}{character. Organism database to use for conversion (e.g., "org.Hs.eg.db").}
 }
 \value{
-A clusterProfiler \code{enrichResult} object containing GO enrichment results.
+A list with gene vectors: all genes, upregulated, and downregulated.
 }
 \description{
 This function reads differential gene expression results and performs GO enrichment
 analysis using the clusterProfiler package.
 }
 \examples{
-# Example usage:
-# result <- perform_enrichGO("deseq2_results.csv", 0.05, "padj")
+# result <- prepare_clusterProfiler_geneLists("deseq2_results.csv", 0.05, "padj")
+
 }
