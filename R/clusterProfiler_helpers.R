@@ -1,6 +1,6 @@
 #' Prepares geneList inputs for clusterProfiler ORA
 #'
-#' This function reads differential gene expression results and performs GO enrichment
+#' This function reads differential gene expression results and prepares input gene lists for over-representation
 #' analysis using the clusterProfiler package.
 #'
 #' @param dgea_res_file character. Path to the DGEA result file (.csv, .tsv, or .txt).

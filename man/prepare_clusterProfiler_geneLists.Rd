@@ -36,7 +36,7 @@ prepare_clusterProfiler_geneLists(
 A list with gene vectors: all genes, significantly upregulated, and significantly downregulated.
 }
 \description{
-This function reads differential gene expression results and performs GO enrichment
+This function reads differential gene expression results and prepares input gene lists for over-representation
 analysis using the clusterProfiler package.
 }
 \examples{
