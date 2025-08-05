@@ -39,10 +39,10 @@ prepare_clusterProfiler_geneLists <- function(dgea_res_file, pValCutoff = 0.05, 
     stop("Error: Unsupported file type. Please provide a .txt or .csv file ")
   }
   # subset DGEA results for significant upregulated and downregualted genes 
-  sig_res <- res %>% filter(!!sym(pValCol) < pValCutoff & abs(!!sym(log2FCCol)) > log2FCCutoff)
+  sig_res <- res %>% filter(!!rlang::sym(pValCol) < pValCutoff & abs(!!rlang::sym(log2FCCol)) > log2FCCutoff)
   
-  gene_up <- sig_res %>% filter(!!sym(log2FCCol) > 0)
-  gene_down <- sig_res %>% filter(!!sym(log2FCCol) < 0)
+  gene_up <- sig_res %>% filter(!!rlang::sym(log2FCCol) > 0)
+  gene_down <- sig_res %>% filter(!!rlang::sym(log2FCCol) < 0)
   
   
   geneList <- rownames(res)
