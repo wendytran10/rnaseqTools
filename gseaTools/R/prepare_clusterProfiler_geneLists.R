@@ -62,10 +62,6 @@ prepare_clusterProfiler_geneLists <- function(dgea_res_file, pValCutoff = 0.05, 
   
   return(list(geneList = geneList, gene_up = gene_up, gene_down = gene_down))
 }
-devtools::document()
-test <- prepare_clusterProfiler_geneLists(dgea_res_file = "~/OneDrive - Queen Mary, University of London/BCI-BioinfoCore/BCC152_Carvalho_RNASeq/BCC0152_analysis/differential_gene_expression/CKD_wDepression_vs_CKD_deseq2_results.csv",
-                                          pValCutoff = 0.05, pValCol = "pvalue", geneID_fromType = "SYMBOL", geneID_toType = "ENTREZID")
-
 
 
 
