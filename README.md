@@ -11,7 +11,7 @@ You can install the development version directly from GitHub using:
 devtools::install_github("wendytran10/rnaseqTools")
 ```
 ## Example usage
-## Function: `prepare_clusterProfiler_geneLists()`
+### Function: `prepare_clusterProfiler_geneLists()`
 
 This function processes DGEA results and prepares gene lists for enrichment analysis using `clusterProfiler`.
 
