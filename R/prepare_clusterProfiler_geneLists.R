@@ -5,9 +5,7 @@
 #' date: August 5, 2025
 
 
-library(tidyverse)
-library(clusterProfiler)
-library(tools)
+
 
 #' Perform GO Enrichment Analysis with clusterProfiler
 #'
@@ -24,10 +22,14 @@ library(tools)
 #' @param org character. organism to use for conversion (options come from bitr())
 
 #' @return A clusterProfiler `enrichResult` object containing GO enrichment results.
+#' 
+#' @import tidyverse
+#' @import clusterProfiler
+#' 
 #' @examples
 #' # Example usage:
 #' # result <- perform_enrichGO("deseq2_results.csv", 0.05, "padj")
-#'
+#' @name prepare_clusterProfiler_geneLists
 #' @export
 prepare_clusterProfiler_geneLists <- function(dgea_res_file, pValCutoff = 0.05, pValCol = "padj", 
                                               log2FCCutoff = 1, log2FCCol = "log2FoldChange", 
@@ -62,6 +64,7 @@ prepare_clusterProfiler_geneLists <- function(dgea_res_file, pValCutoff = 0.05, 
   
   return(list(geneList = geneList, gene_up = gene_up, gene_down = gene_down))
 }
+
 
 
 
